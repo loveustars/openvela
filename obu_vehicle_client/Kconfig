@@ -1,0 +1,26 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config EXAMPLES_OBU_VEHICLE_CLIENT
+    tristate "obu vehicle client"
+    default n
+    ---help---
+        Enable the obu vehicle client example.
+
+if EXAMPLES_OBU_VEHICLE_CLIENT
+
+config EXAMPLES_OBU_VEHICLE_CLIENT_PROGNAME
+    string "Program name"
+    default "obu_vehicle_client"
+
+config EXAMPLES_OBU_VEHICLE_CLIENT_PRIORITY
+    int "OBU task priority"
+    default 100
+
+config EXAMPLES_OBU_VEHICLE_CLIENT_STACKSIZE
+    int "OBU task stack size"
+    default 40960
+
+endif

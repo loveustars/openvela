@@ -1,0 +1,44 @@
+#ifndef OBU_CONFIG_H
+#define OBU_CONFIG_H
+
+#define OBU_APP_NAME "obu_vehicle_client"
+
+#define OBU_VEHICLE_ID "obu_1"
+#define MAIN_LOOP_INTERVAL_MS 100UL
+#define MQTT_RECONNECT_INTERVAL_MS 2000UL
+
+#define MQTT_CLIENT_ID "obu_1_client"
+#define MQTT_SPAT_TOPIC "v2i/spat/#"
+#define MQTT_BROKER_HOST "192.168.168.133"
+#define MQTT_BROKER_PORT 1883
+#define MQTT_USERNAME ""
+#define MQTT_PASSWORD ""
+#define MQTT_CONFIG_PATH "/data/mqtt.cfg"
+
+#define MQTT_PAYLOAD_BUFFER_SIZE 256
+#define MQTT_SEND_BUFFER_SIZE 2048
+#define MQTT_RECV_BUFFER_SIZE 1024
+#define MQTT_KEEPALIVE_SECONDS 30
+
+#define WIFI_SSID "replace_with_ssid"
+#define WIFI_PASSWORD "replace_with_password"
+#define WIFI_CONFIG_PATH "/data/wifi.cfg"
+#define WIFI_STATUS_PATH "/tmp/wifi_status.txt"
+#define WIFI_MANUAL_READY_FLAG "/tmp/obu_wifi_ready"
+
+#define GUI_ENABLED 1
+#define RSU_ID_MAX_LEN 16
+#define MQTT_TOPIC_MAX_LEN 64
+#define OBU_GUI_USE_LVGL 1
+
+#define OBU_SPAT_SELF_TEST 0
+#define OBU_SPAT_SELF_TEST_INTERVAL_MS 1000UL
+#define OBU_DEMO_OFFLINE_MODE 0
+
+#define VEHICLE_INPUT_SOURCE_SIMULATION 0
+#define VEHICLE_INPUT_SOURCE_BUTTONS 1
+#define VEHICLE_INPUT_SOURCE_SERIAL 2
+
+#define VEHICLE_INPUT_SOURCE VEHICLE_INPUT_SOURCE_BUTTONS
+
+#endif

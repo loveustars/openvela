@@ -1,0 +1,26 @@
+if(CONFIG_EXAMPLES_OBU_VEHICLE_CLIENT)
+  nuttx_add_application(
+    NAME
+    ${CONFIG_EXAMPLES_OBU_VEHICLE_CLIENT_PROGNAME}
+    INCLUDE_DIRECTORIES
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${NUTTX_APPS_DIR}/graphics/lvgl
+    SRCS
+    obu_main.c
+    direction.c
+    json_builder.c
+    logging.c
+    mqtt_client.c
+    network_manager.c
+    obu_app.c
+    platform_adapter.c
+    syscall_compat.c
+    spat_state.c
+    topic_router.c
+    vehicle_state.c
+    vehicle_gui.c
+    STACKSIZE
+    ${CONFIG_EXAMPLES_OBU_VEHICLE_CLIENT_STACKSIZE}
+    PRIORITY
+    ${CONFIG_EXAMPLES_OBU_VEHICLE_CLIENT_PRIORITY})
+endif()

@@ -1,0 +1,69 @@
+#
+# 智能交通信号控制器 (Traffic Signal Controller) Configuration
+#
+# 4 相位独立控制 (NS_STRAIGHT / NS_LEFT / EW_STRAIGHT / EW_LEFT)
+# 12-bit 通行许可 (4 方向 × 3 动作 = 12 bit)
+# 安全模式：通信中断时锁定 NS_STRAIGHT
+#
+# 参考 hello 应用的 Kconfig 结构
+#
+
+menuconfig EXAMPLES_TRAFFIC_CONTROLLER
+	tristate "Traffic Signal Controller (4-phase)"
+	default n
+	depends on NET_LWIP
+	---help---
+		Enable build the Smart Traffic Signal Controller application.
+
+		四相位独立控制 (NS_STRAIGHT / NS_LEFT / EW_STRAIGHT / EW_LEFT)，
+		12-bit 通行许可位掩码，支持安全模式 (通信中断 → 锁定 NS_STRAIGHT)。
+		适用于 OpenVela 嵌入式 V2I 路口信号控制。
+
+		板上运行后，命令行执行 "traffic_controller" 启动。
+
+if EXAMPLES_TRAFFIC_CONTROLLER
+
+config EXAMPLES_TRAFFIC_CONTROLLER_PROGNAME
+	string "Program name"
+	default "traffic_controller"
+	---help---
+		最终生成的可执行文件名。串口输入该名字即可运行程序。
+
+config EXAMPLES_TRAFFIC_CONTROLLER_PRIORITY
+	int "Task priority"
+	default 100
+	---help---
+		主循环任务优先级。100 是常规用户任务优先级。
+
+config EXAMPLES_TRAFFIC_CONTROLLER_STACKSIZE
+	int "Stack size"
+	default 65536
+	range 4096 262144
+	---help---
+		任务栈大小。控制器逻辑较轻，16KB 足够。
+
+config EXAMPLES_TRAFFIC_CONTROLLER_DEFAULT_SCENARIO
+	string "Default scenario (when started without --scenario arg)"
+	default "balanced"
+	---help---
+		启动时如果不带参数，使用哪个仿真场景。
+		可选: balanced / ns_rush / ew_rush / left_rush / alternating_wave / idle
+
+config EXAMPLES_TRAFFIC_CONTROLLER_DEFAULT_DURATION
+	int "Default duration (seconds, 0 = infinite)"
+	default 0
+	---help---
+		默认仿真时长。0 表示一直运行（推荐演示模式）。
+
+config EXAMPLES_TRAFFIC_CONTROLLER_MQTT_BROKER
+	string "MQTT broker URL"
+	default "tcp://192.168.1.1:1883"
+	---help---
+		MQTT broker 地址。从队友 A 接收车辆数据时使用。
+
+config EXAMPLES_TRAFFIC_CONTROLLER_LOG_LEVEL
+	int "Log verbosity (0=silent, 1=normal, 2=verbose)"
+	default 1
+	range 0 2
+
+endif

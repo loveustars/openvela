@@ -1,0 +1,7 @@
+############################################################################
+# apps/examples/obu_vehicle_client/Make.defs
+############################################################################
+
+ifneq ($(CONFIG_EXAMPLES_OBU_VEHICLE_CLIENT),)
+CONFIGURED_APPS += $(APPDIR)/examples/obu_vehicle_client
+endif

@@ -1,0 +1,10 @@
+# Make.defs for traffic_controller example
+#
+# 在 menuconfig 启用 EXAMPLES_TRAFFIC_CONTROLLER 后，本文件将源码路径
+# 加入编译系统的待编译队列。
+#
+# 参考 apps/examples/hello/Make.defs
+
+ifneq ($(CONFIG_EXAMPLES_TRAFFIC_CONTROLLER),)
+	CONFIGURED_APPS += $(APPDIR)/examples/traffic_controller
+endif
